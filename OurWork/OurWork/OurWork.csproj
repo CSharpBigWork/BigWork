@@ -84,6 +84,9 @@
     <Compile Include="Response.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleDb.cs" />
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
