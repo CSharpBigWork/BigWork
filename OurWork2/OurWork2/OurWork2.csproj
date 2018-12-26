@@ -76,6 +76,12 @@
     <Compile Include="AddDetailFrm.Designer.cs">
       <DependentUpon>AddDetailFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddScheduleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddScheduleFrm.Designer.cs">
+      <DependentUpon>AddScheduleFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Calculated.cs" />
     <Compile Include="ClassDb.cs" />
     <Compile Include="ClassTool.cs" />
@@ -86,6 +92,13 @@
     <Compile Include="EditDetailFrm.Designer.cs">
       <DependentUpon>EditDetailFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditScheduleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditScheduleFrm.Designer.cs">
+      <DependentUpon>EditScheduleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs" />
     <Compile Include="EventDb.cs" />
     <Compile Include="EventDetails.cs" />
     <Compile Include="GetResponse.cs" />
@@ -104,11 +117,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="ScheduleDb.cs" />
+    <Compile Include="scheduleService.cs" />
     <EmbeddedResource Include="AddDetailFrm.resx">
       <DependentUpon>AddDetailFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddScheduleFrm.resx">
+      <DependentUpon>AddScheduleFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditDetailFrm.resx">
       <DependentUpon>EditDetailFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditScheduleFrm.resx">
+      <DependentUpon>EditScheduleFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
@@ -126,6 +148,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Event.datasource" />
+    <None Include="Properties\DataSources\Schedule.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

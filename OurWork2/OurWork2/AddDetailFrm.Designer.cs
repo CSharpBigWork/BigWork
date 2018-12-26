@@ -41,9 +41,9 @@
             // 
             // 
             this.detailTextBox.CustomButton.Image = null;
-            this.detailTextBox.CustomButton.Location = new System.Drawing.Point(158, 1);
+            this.detailTextBox.CustomButton.Location = new System.Drawing.Point(110, 1);
             this.detailTextBox.CustomButton.Name = "";
-            this.detailTextBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.detailTextBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.detailTextBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.detailTextBox.CustomButton.TabIndex = 1;
             this.detailTextBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -113,7 +113,9 @@
             this.Controls.Add(this.dateTime);
             this.Controls.Add(this.detailTextBox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(252, 228);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(252, 228);
             this.Name = "AddDetailFrm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "AddDetail";

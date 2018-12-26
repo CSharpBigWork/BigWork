@@ -33,7 +33,6 @@
             this.submitButton = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.checkBox = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // userNameTextBox
@@ -101,9 +100,9 @@
             this.submitButton.BackColor = System.Drawing.Color.White;
             this.submitButton.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.submitButton.FontWeight = MetroFramework.MetroButtonWeight.Light;
-            this.submitButton.Location = new System.Drawing.Point(122, 153);
+            this.submitButton.Location = new System.Drawing.Point(29, 153);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(100, 23);
+            this.submitButton.Size = new System.Drawing.Size(193, 23);
             this.submitButton.TabIndex = 2;
             this.submitButton.Text = "确认";
             this.submitButton.UseSelectable = true;
@@ -127,29 +126,20 @@
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "密码：";
             // 
-            // checkBox
-            // 
-            this.checkBox.AutoSize = true;
-            this.checkBox.Location = new System.Drawing.Point(32, 157);
-            this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(75, 15);
-            this.checkBox.TabIndex = 5;
-            this.checkBox.Text = "记住密码";
-            this.checkBox.UseSelectable = true;
-            // 
             // LoginFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(245, 207);
-            this.Controls.Add(this.checkBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.passwordTextBox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(245, 207);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(245, 207);
             this.Name = "LoginFrm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Login";
@@ -165,6 +155,5 @@
         private MetroFramework.Controls.MetroButton submitButton;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroCheckBox checkBox;
     }
 }

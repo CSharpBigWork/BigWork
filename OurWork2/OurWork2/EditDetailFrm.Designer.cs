@@ -127,7 +127,9 @@
             this.Controls.Add(this.dateTime);
             this.Controls.Add(this.detailTextBox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(285, 231);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(285, 231);
             this.Name = "EditDetailFrm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "EditDetail";

@@ -36,12 +36,15 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.listView2 = new MetroFramework.Controls.MetroListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.listView3 = new MetroFramework.Controls.MetroListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.weekComboBox = new MetroFramework.Controls.MetroComboBox();
             this.dayComboBox = new MetroFramework.Controls.MetroComboBox();
@@ -52,6 +55,7 @@
             this.dateLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -65,7 +69,7 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.SelectedIndex = 1;
             this.tabControl1.Size = new System.Drawing.Size(412, 186);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.UseSelectable = true;
@@ -129,6 +133,50 @@
             this.columnHeader5.Text = "上课时间";
             this.columnHeader5.Width = 100;
             // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.Controls.Add(this.listView2);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(404, 144);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "日程安排";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader9});
+            this.listView2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listView2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.listView2.FullRowSelect = true;
+            this.listView2.Location = new System.Drawing.Point(0, 3);
+            this.listView2.MultiSelect = false;
+            this.listView2.Name = "listView2";
+            this.listView2.OwnerDraw = true;
+            this.listView2.Size = new System.Drawing.Size(404, 141);
+            this.listView2.TabIndex = 2;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.UseSelectable = true;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseDoubleClick);
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "时间";
+            this.columnHeader6.Width = 86;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "事情";
+            this.columnHeader9.Width = 303;
+            // 
             // metroTabPage3
             // 
             this.metroTabPage3.Controls.Add(this.listView3);
@@ -163,7 +211,6 @@
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.UseSelectable = true;
             this.listView3.View = System.Windows.Forms.View.Details;
-            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
             this.listView3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView3_MouseDoubleClick);
             // 
             // columnHeader7
@@ -182,20 +229,6 @@
             // 
             this.columnHeader1.Text = "";
             this.columnHeader1.Width = 0;
-            // 
-            // metroTabPage2
-            // 
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(404, 144);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "日程安排";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
             // metroPanel1
             // 
@@ -323,6 +356,7 @@
             this.dateLabel.Size = new System.Drawing.Size(90, 22);
             this.dateLabel.TabIndex = 7;
             this.dateLabel.Text = "日期显示";
+            this.dateLabel.TextChanged += new System.EventHandler(this.dateLabel_TextChanged);
             // 
             // MainFrm
             // 
@@ -334,12 +368,15 @@
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroPanel1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(452, 310);
+            this.MinimumSize = new System.Drawing.Size(452, 310);
             this.Name = "MainFrm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "AfterEight";
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.tabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
+            this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
@@ -368,9 +405,12 @@
         public MetroFramework.Controls.MetroComboBox dayComboBox;
         public MetroFramework.Controls.MetroListView listView3;
         public MetroFramework.Controls.MetroListView listView1;
-        private System.Windows.Forms.Label dateLabel;
         private MetroFramework.Controls.MetroButton updataButton;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        public System.Windows.Forms.Label dateLabel;
+        public MetroFramework.Controls.MetroListView listView2;
     }
 }
 

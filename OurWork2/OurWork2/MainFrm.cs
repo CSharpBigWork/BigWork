@@ -13,6 +13,9 @@ namespace OurWork2
 {
     public partial class MainFrm : MetroForm
     {
+        public scheduleService s = new scheduleService();
+        public ScheduleDb evtDb = new ScheduleDb();
+        public DateTime date;
         public EventDb db = new EventDb();
         public List<EventDetails> eventDetails = new List<EventDetails>();
         public List<List<Course>> courses = new List<List<Course>>();
@@ -31,6 +34,27 @@ namespace OurWork2
             dayComboBox.SelectedIndexChanged += new EventHandler(dayComboBox_SelectedIndexChanged);
             SetListView1(thisWeek, dayOfWeek);
             SetDateLabel();
+
+            //载入所有事件到sheduleService
+            foreach (string dt in evtDb.getAllDate())
+            {
+                Schedule schedule = new Schedule(dt);
+                foreach (Event evt in evtDb.GetEvents(dt))
+                    if (evtDb.GetEvents(dt).Count > 0)
+                        schedule.AddEvents(evt);
+                s.AddSchedule(schedule);
+            }
+            //载入当天事件显示在listview上
+            date = DateTime.Now;
+            Schedule sch;
+            if (s.GetByDate(date.ToShortDateString()) != null)
+                sch = s.GetByDate(date.ToShortDateString());
+            else
+            {
+                sch = new Schedule(date.ToShortDateString());
+                s.AddSchedule(sch);
+            }
+            SetListView2(sch.Events);
 
             eventDetails = db.GetEventDetails();
             SetListView3(eventDetails);
@@ -84,6 +108,22 @@ namespace OurWork2
             this.listView1.EndUpdate();
         }
 
+        /// <summary>
+        /// 更新listview2
+        /// </summary>
+        /// <param name="evt"></param>
+        public void SetListView2(List<Event> evt)
+        {
+            this.listView2.Items.Clear();
+            this.listView2.BeginUpdate();
+            foreach (Event _e in evt)
+            {
+                ListViewItem item = new ListViewItem(_e.dateKey.ToShortTimeString());
+                item.SubItems.Add(_e.Events);
+                this.listView2.Items.Add(item);
+            }
+            this.listView2.EndUpdate();
+        }
 
         /// <summary>
         /// 对ListView3进行SET
@@ -153,6 +193,7 @@ namespace OurWork2
             int slctDay = dayComboBox.SelectedIndex;
             SetListView1(slctWeek, slctDay);
             SetDateLabel();
+
         }
 
         /// <summary>
@@ -167,11 +208,6 @@ namespace OurWork2
             int slctDay = dayComboBox.SelectedIndex;
             SetListView1(slctWeek, slctDay);
             SetDateLabel();
-        }
-
-        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -220,7 +256,7 @@ namespace OurWork2
                 if (listView1.SelectedItems.Count != 0)
                 {
                     string className = listView1.SelectedItems[0].Text;
-                    AddDetailFrm f = new AddDetailFrm(this, className,1);
+                    AddDetailFrm f = new AddDetailFrm(this, className, 1);
                     f.Show();
                 }
                 else
@@ -230,13 +266,40 @@ namespace OurWork2
             }
             if (tabControl1.SelectedIndex == 1)
             {
-
+                AddScheduleFrm f = new AddScheduleFrm(new Event(), this);
+                f.ShowDialog();
+                Schedule sch;
+                String dt = dateLabel.Text;
+                if (s.GetByDate(dt) != null)
+                    sch = s.GetByDate(dt);
+                else
+                {
+                    sch = new Schedule(dt);
+                    s.AddSchedule(sch);
+                }
+                Event evt = f.getResult();
+                if (evt.Events != null)
+                {
+                    evtDb.AddRowInDataSet(evt);
+                }
+                UpdateSch(sch, dt);
+                SetListView2(sch.Events);
             }
             if (tabControl1.SelectedIndex == 2)
             {
-                AddDetailFrm f = new AddDetailFrm(this,3);
+                AddDetailFrm f = new AddDetailFrm(this, 3);
                 f.Show();
             }
+        }
+
+        /// <summary>
+        /// 获取当前选择日期
+        /// </summary>
+        /// <returns></returns>
+        public DateTime getTP()
+        {
+            DateTime dt = DateTime.Parse(dateLabel.Text);
+            return dt;
         }
 
         private void listView3_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -258,6 +321,50 @@ namespace OurWork2
             listView3.Items.Clear();
             SetListView3(eventDetails);
             return;
+        }
+
+        /// <summary>
+        /// 更改后刷新日程
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="dt"></param>
+        public void UpdateSch(Schedule s, string dt)
+        {
+            s.RemoveAllEvents();
+            foreach (Event _evt in evtDb.GetEvents(dt))
+                if (evtDb.GetEvents(dt).Count > 0)
+                    s.AddEvents(_evt);
+        }
+
+        private void dateLabel_TextChanged(object sender, EventArgs e)
+        {
+            Schedule sch;
+            String dt = dateLabel.Text;
+            if (s.GetByDate(dt) != null)
+                sch = s.GetByDate(dt);
+            else
+            {
+                sch = new Schedule(dt);
+                s.AddSchedule(sch);
+            }
+            SetListView2(sch.Events);
+        }
+
+        /// <summary>
+        /// 获取listview选择行的时间信息
+        /// </summary>
+        /// <returns></returns>
+        public string getSelctTime()
+        {
+            return listView2.SelectedItems[0].SubItems[0].Text;
+        }
+
+        private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string evts = this.listView2.SelectedItems[0].SubItems[1].Text;
+            Event _evt = new Event(evts);
+            EditScheduleFrm f = new EditScheduleFrm(_evt, this);
+            f.Show();
         }
     }
 }
