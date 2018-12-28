@@ -28,7 +28,7 @@ namespace OurWork2
             string password = passwordTextBox.Text;
             string rstStr = "id=" + userName + "&" + "password=" + password;
             GetResponse getResponse = new GetResponse();
-            string jsonStr = getResponse.HttpPost("http://csharp.campuses.cn/courses", rstStr);
+            string jsonStr = getResponse.HttpPost("http://47.100.30.233/courses", rstStr);
             Response response = JsonConvert.DeserializeObject<Response>(jsonStr);
             if (response.success == "false")
             {
