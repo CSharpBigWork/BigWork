@@ -116,6 +116,7 @@ namespace OurWork2
         {
             this.listView2.Items.Clear();
             this.listView2.BeginUpdate();
+            evt = evt.OrderBy(e => e.dateKey).ToList();
             foreach (Event _e in evt)
             {
                 ListViewItem item = new ListViewItem(_e.dateKey.ToShortTimeString());
@@ -361,10 +362,16 @@ namespace OurWork2
 
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            string evts = this.listView2.SelectedItems[0].SubItems[1].Text;
-            Event _evt = new Event(evts);
-            EditScheduleFrm f = new EditScheduleFrm(_evt, this);
-            f.Show();
+            try
+            {
+                string evts = this.listView2.SelectedItems[0].SubItems[1].Text;
+                Event _evt = new Event(evts);
+                EditScheduleFrm f = new EditScheduleFrm(_evt, this);
+                f.Show();
+            }
+            catch
+            {
+            }
         }
     }
 }
