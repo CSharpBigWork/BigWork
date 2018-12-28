@@ -18,12 +18,16 @@ namespace OurWork2
         MainFrm mainFrm;
         public EditDetailFrm(MainFrm mainFrm)
         {
-            InitializeComponent();
-            this.mainFrm = mainFrm;
-            int i = Convert.ToInt32(mainFrm.listView3.SelectedItems[0].SubItems[2].Text);
-            ed = mainFrm.db.GetEvents(i);
-            dateTime.Value = mainFrm.db.GetEvents(i).createTime;
-            detailTextBox.Text = mainFrm.db.GetEvents(i).eventName;
+            try
+            {
+                InitializeComponent();
+                this.mainFrm = mainFrm;
+                int i = Convert.ToInt32(mainFrm.listView3.SelectedItems[0].SubItems[2].Text);
+                ed = mainFrm.db.GetEvents(i);
+                dateTime.Value = mainFrm.db.GetEvents(i).createTime;
+                detailTextBox.Text = mainFrm.db.GetEvents(i).eventName;
+            }
+            catch { }
         }
 
         private void submitEditButton_Click(object sender, EventArgs e)
